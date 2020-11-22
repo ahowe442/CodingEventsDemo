@@ -10,8 +10,8 @@
 }
 
 <ul>
-    @foreach(string meeting in ViewBag.events)
+    @foreach(var meeting in ViewBag.events)
     {
-        <li>@meeting</li>
+        <li>@meeting.Key:   @meeting.Value</li>
     }
 </ul>
