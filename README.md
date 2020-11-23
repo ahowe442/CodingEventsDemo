@@ -1,4 +1,4 @@
-﻿#Coding Events Project
+﻿# Coding Events Project
 
 This project is an example of ASP.net MVC project.  This project is a typical CRUD application that uses:
 1.  Controllers and Routing
