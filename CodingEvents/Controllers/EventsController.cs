@@ -48,6 +48,7 @@ namespace CodingEvents.Controllers
             return View();
         }
 
+
         [HttpPost]
         public IActionResult Delete(int[] eventIds)
         {
@@ -59,19 +60,39 @@ namespace CodingEvents.Controllers
             return Redirect("/Events");
         }
 
+
         [Route("/Events/Edit/{eventId}")]
         public IActionResult Edit(int eventId)
         {
 
-            ViewBag.EditId = EventData.GetById(eventId);
-            return Redirect("/Events");
+            ViewBag.eventToEdit = EventData.GetById(eventId);
+            ViewBag.title = "Edit Event {Name} (id={Id})";
+            return Redirect("/Edit");
         }
+
 
         [HttpPost]
         [Route("/Events/Edit")]
         public IActionResult SubmitEditEventForm(int eventId, string name, string description)
         {
+            EventData.GetById(eventId);
+             
+            //EventData = ViewBag.eventToEdit.name;
+            //description = ViewBag.eventToEdit.description;
             return Redirect("/Events");
         }
     }
 }
+/*TODO:  
+ * Back in EventsController, round out the Edit() method.
+
+Use an EventData method to find the event object with the given eventId.
+Put the event object in ViewBag.
+Return the appropriate view.
+Within the form fields in Edit.cshtml,
+
+Get the name and description from the event that was passed in via ViewBag and set them as the values of the form fields.
+Add action="/events/edit" to the form tag.
+Add another input to hold the id of the event being edited. This should be hidden from the user:
+
+ */
